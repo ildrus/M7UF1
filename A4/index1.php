@@ -3,8 +3,10 @@
 <head>
 	<title></title>
 	<?php	
-		$cssFile= $_GET["skinfile"].".css";
-		echo "<link rel='stylesheet' type='text/css' href='css/".$cssFile."'>";
+		if(isset($_GET["skinfile"])){
+			$cssFile= $_GET["skinfile"].".css";
+			echo "<link rel='stylesheet' type='text/css' href='css/".$cssFile."'>";
+		}
 		$dir = opendir("css");
 		$array=[];
 		$array[]=$arxiu = readdir($dir);
@@ -23,15 +25,12 @@
 	<SELECT name="skinfile">
 		<?php
 			for($i=0;$i<$count;$i++){
-				echo "<option >".substr($array[$i],0,-4)."</option>";
-			}		
+				echo "<option>".substr($array[$i],0,-4)."</option>";
+			}	
 		?>
 	</SELECT>
- 	<BR />
-	<INPUT type="submit" />
+ 	<BR/>
+	<INPUT type="submit"/>
 </FORM>
 </body>
 </html>
-
-
-
